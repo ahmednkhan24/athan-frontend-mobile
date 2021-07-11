@@ -1873,10 +1873,10 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-athan-shared@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/athan-shared/-/athan-shared-1.0.2.tgz#008b44a5448f75c184c4bbb399a9067095924913"
-  integrity sha512-yBug7d4Y/xMHDIt8b1OTftaYgYX6OGtvCkPs4hc6CLQQQ+R2yZPp8igczzudwSQM/atu/6TfKLpy5Jg2A9Vh/g==
+athan-shared@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/athan-shared/-/athan-shared-1.0.5.tgz#d003b0b6b0774e114e3abca4661e73711265b875"
+  integrity sha512-M8X3Ys9m2s9je9qGwz8bgmSHG+lnDvAPq8smyKEsdmoM08E9zNcTtlccfOcTXpTWBrz8UEls9B4DMy8Bxvy9vw==
   dependencies:
     axios "^0.21.1"
 
