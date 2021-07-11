@@ -13,7 +13,7 @@ const Home: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text h3>Hello World</Text>
-      <Text h4>{location}</Text>
+      <Text h4>{JSON.stringify(location)}</Text>
       <Button
         title="Go to Sample Page"
         onPress={() => navigation.navigate('Sample')}

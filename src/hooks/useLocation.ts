@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
+  LocationObject,
   requestForegroundPermissionsAsync,
   getCurrentPositionAsync,
 } from 'expo-location';
 
 export const useLocation = () => {
-  const [location, setLocation] = useState<string | null>(null);
+  const [location, setLocation] = useState<LocationObject | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const fetchLocation = useCallback(async (): Promise<void> => {
@@ -17,9 +18,9 @@ export const useLocation = () => {
       }
 
       const location = await getCurrentPositionAsync({});
-      setLocation(JSON.stringify(location));
+      setLocation(location);
     } catch (err) {
-      setErrorMessage('Error');
+      setErrorMessage('Error fetching user location');
     }
   }, []);
 
