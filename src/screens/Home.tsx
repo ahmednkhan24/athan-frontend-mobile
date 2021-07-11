@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useLocation } from '../hooks';
+import { useLocation, useTimings } from '../hooks';
 
 export type HomeScreenProps = {
   navigation: StackNavigationProp<any>;
@@ -10,6 +10,8 @@ export type HomeScreenProps = {
 
 const Home: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { location } = useLocation();
+  const { fetchPrayerTimings } = useTimings();
+
   return (
     <View style={styles.container}>
       <Text h3>Hello World</Text>
