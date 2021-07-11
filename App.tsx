@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
@@ -9,7 +8,6 @@ const App: React.FC = () => {
       <Text h3>
         Hello World
       </Text>
-      <StatusBar style="auto" />
     </View>
   );
 }
