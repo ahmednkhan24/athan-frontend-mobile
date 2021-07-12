@@ -9,6 +9,7 @@ export const useLocation = () => {
   const [location, setLocation] = useState<LocationObject | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // get permission to access location and then retrieve it
   const fetchLocation = useCallback(async (): Promise<void> => {
     try {
       const { status } = await requestForegroundPermissionsAsync();
@@ -24,6 +25,7 @@ export const useLocation = () => {
     }
   }, []);
 
+  // fetch location on initial load
   useEffect(() => {
     fetchLocation();
   }, []);
