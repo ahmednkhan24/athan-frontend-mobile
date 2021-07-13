@@ -9,13 +9,13 @@ export type HomeScreenProps = {
 };
 
 const Home: React.FC<HomeScreenProps> = ({ navigation }) => {
-  const { location } = useLocation();
-  const { fetchPrayerTimings } = useTimings();
+  const { city } = useLocation();
+  // const { fetchPrayerTimings } = useTimings();
 
   return (
     <View style={styles.container}>
       <Text h3>Hello World</Text>
-      <Text h4>{JSON.stringify(location)}</Text>
+      <Text h4>{city}</Text>
       <Button
         title="Go to Sample Page"
         onPress={() => navigation.navigate('Sample')}
