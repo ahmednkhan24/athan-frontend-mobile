@@ -4,10 +4,11 @@ import HomeScreen from './Home';
 import SettingsScreen from './Settings';
 import TabBarIcons from '../components/TabBarIcons';
 import { HOME_SCREEN, SETTINGS_SCREEN } from '../constants';
+import type { ScreenOptions } from '../types';
 
 const TabBar = createBottomTabNavigator();
 
-const screenOptions: any = ({ route }: any) => ({
+const screenOptions: ScreenOptions = ({ route, navigation }) => ({
   tabBarIcon: (props: any) => <TabBarIcons {...props} routeName={route.name} />,
 });
 

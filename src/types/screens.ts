@@ -1,5 +1,5 @@
-import { Route } from '@react-navigation/routers';
-import {
+import type { Route } from '@react-navigation/routers';
+import type {
   BottomTabNavigationOptions,
   BottomTabNavigationProp,
 } from '@react-navigation/bottom-tabs';

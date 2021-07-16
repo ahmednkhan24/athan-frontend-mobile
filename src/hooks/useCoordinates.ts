@@ -4,8 +4,8 @@ import {
   requestForegroundPermissionsAsync,
   getCurrentPositionAsync,
 } from 'expo-location';
-import { Coordinates } from '../types';
 import { GRANTED } from '../constants';
+import type { Coordinates } from '../types';
 
 export const useCoordinates = () => {
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
