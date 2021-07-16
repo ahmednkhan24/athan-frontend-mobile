@@ -5,7 +5,7 @@ import SettingsScreen from './Settings';
 import TabBarIcons from '../components/TabBarIcons';
 import { HOME_SCREEN, SETTINGS_SCREEN } from '../constants';
 
-export const TabBar = createBottomTabNavigator();
+const TabBar = createBottomTabNavigator();
 
 const screenOptions: any = ({ route }: any) => ({
   tabBarIcon: (props: any) => <TabBarIcons {...props} routeName={route.name} />,
