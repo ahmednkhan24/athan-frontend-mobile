@@ -1,23 +1,23 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './src/screens/Home';
 import SampleScreen from './src/screens/Sample';
 
-const Stack = createStackNavigator();
+const TabBar = createBottomTabNavigator();
 
 const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
+      <TabBar.Navigator initialRouteName="Home">
+        <TabBar.Screen
           name="Home"
           component={HomeScreen}
           options={{ title: 'Athan Mobile' }}
         />
-        <Stack.Screen name="Sample" component={SampleScreen} />
-      </Stack.Navigator>
+        <TabBar.Screen name="Sample" component={SampleScreen} />
+      </TabBar.Navigator>
     </NavigationContainer>
   );
 };

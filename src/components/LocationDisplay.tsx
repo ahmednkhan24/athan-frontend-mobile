@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
+    paddingTop: 45,
   },
   cityStyles: {
     flex: 1,
