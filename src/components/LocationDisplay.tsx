@@ -1,25 +1,34 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
+  StyleSheet,
+} from 'react-native';
 import { Text } from 'react-native-elements';
 import { Ionicons } from '@expo/vector-icons';
 import { useCoordinates, useCity } from '../hooks';
 
 const LocationDisplay: React.FC = () => {
-  const { calculateCoordinates } = useCoordinates();
+  const { coordinates, calculateCoordinates } = useCoordinates();
   const { city } = useCity();
 
   return (
     <View style={styles.container}>
-      <Text h1 style={styles.cityStyles}>
-        {city ?? 'loading...'}
-      </Text>
+      {coordinates && city ? (
+        <Text h1 style={styles.cityStyles}>
+          {city}
+        </Text>
+      ) : (
+        <ActivityIndicator size="large" style={styles.loaderStyles} />
+      )}
       <Text style={styles.elapsedTimeStyles}>3 secs ago</Text>
       <TouchableOpacity onPress={calculateCoordinates}>
         <Ionicons
           name="refresh"
           size={24}
           color="grey"
-          style={styles.iconStyles}
+          style={styles.refreshIconStyles}
         />
       </TouchableOpacity>
     </View>
@@ -44,11 +53,16 @@ export const styles = StyleSheet.create({
     // borderColor: 'black',
     // borderWidth: 1,
   },
+  loaderStyles: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingTop: 20,
+  },
   elapsedTimeStyles: {
     paddingTop: 25,
     paddingRight: 5,
   },
-  iconStyles: {
+  refreshIconStyles: {
     flex: 1,
     paddingTop: 15,
     // borderColor: 'black',
