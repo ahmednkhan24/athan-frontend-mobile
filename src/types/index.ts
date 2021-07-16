@@ -1,4 +1,2 @@
-export type Coordinates = {
-  latitude: number;
-  longitude: number;
-};
+export * from './screens';
+export * from './coordinates';
