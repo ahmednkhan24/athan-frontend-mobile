@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useCoordinates, useCity } from '../hooks';
 
 const LocationDisplay: React.FC = () => {
-  const { coordinates, calculateCoordinates } = useCoordinates();
+  const { calculateCoordinates } = useCoordinates();
   const { city } = useCity();
 
   return (
