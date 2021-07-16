@@ -1,5 +1,6 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { HOME_SCREEN, SETTINGS_SCREEN } from '../constants';
 
 export type TabBarIconsProps = {
@@ -17,17 +18,20 @@ const TabBarIcons: React.FC<TabBarIconsProps> = ({
   focused,
   ...restOfProps
 }) => {
-  const determineIconName = () => {
-    switch (routeName) {
-      case HOME_SCREEN:
-        return focused ? 'home' : 'home-outline';
-      case SETTINGS_SCREEN:
-        return focused ? 'settings' : 'settings-outline';
-      default:
-        return 'alert';
-    }
-  };
-
-  return <Ionicons name={determineIconName()} {...restOfProps} />;
+  switch (routeName) {
+    case HOME_SCREEN:
+      return (
+        <AntDesign name={`clockcircle${focused ? '' : 'o'}`} {...restOfProps} />
+      );
+    case SETTINGS_SCREEN:
+      return (
+        <Ionicons
+          name={focused ? 'settings' : 'settings-outline'}
+          {...restOfProps}
+        />
+      );
+    default:
+      return <Ionicons name="alert" {...restOfProps} />;
+  }
 };
 export default TabBarIcons;
