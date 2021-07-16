@@ -15,7 +15,7 @@ const LocationDisplay: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {coordinates && city ? (
+      {city ? (
         <Text h1 style={styles.cityStyles}>
           {city}
         </Text>
