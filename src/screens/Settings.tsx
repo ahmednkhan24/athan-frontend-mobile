@@ -5,12 +5,10 @@ import { Text } from 'react-native-elements';
 const Sample: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text h3>
-        Sample Screen
-      </Text>
+      <Text h3>Settings Screen</Text>
     </View>
   );
-}
+};
 
 export const styles = StyleSheet.create({
   container: {
