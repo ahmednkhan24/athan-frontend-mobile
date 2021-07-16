@@ -11,11 +11,7 @@ const App: React.FC = () => {
   return (
     <NavigationContainer>
       <TabBar.Navigator initialRouteName="Home">
-        <TabBar.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Athan Mobile' }}
-        />
+        <TabBar.Screen name="Home" component={HomeScreen} />
         <TabBar.Screen name="Sample" component={SampleScreen} />
       </TabBar.Navigator>
     </NavigationContainer>
