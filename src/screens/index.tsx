@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { withProviders } from '../hoc';
 import HomeScreen from './Home';
 import SettingsScreen from './Settings';
 import TabBarIcons from '../components/TabBarIcons';
@@ -24,4 +25,4 @@ const Screens: React.FC = () => (
   </>
 );
 
-export default Screens;
+export default withProviders(Screens);
