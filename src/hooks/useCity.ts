@@ -1,37 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { reverseGeocodeAsync, LocationGeocodedAddress } from 'expo-location';
 import { useCoordinates } from './useCoordinates';
+import { UseCity } from '../types';
 
-export const useCity = () => {
+export const useCity = (): UseCity => {
   const { coordinates } = useCoordinates();
   const [city, setCity] = useState<string | null>(null);
 
-  // check if we have to recalculate the user's city any time the coordinates object changes
-  useEffect(() => {
-    // convert latitude longitude object to an address
-    const geocode = async () => {
+  // convert latitude longitude object to an address
+  const calculateCity = useCallback(async () => {
+    try {
+      setCity(null);
       if (coordinates) {
         // TODO: get geocoding to work in browser
         const [address]: LocationGeocodedAddress[] = await reverseGeocodeAsync(
           coordinates
-        ); // expensive function
-        if (address.city) {
-          setCity(address.city);
-        }
+        );
+        setCity(address.city ? address.city : null);
       }
-    };
-
-    const geocodeIfNecessary = async () => {
-      if (!coordinates) {
-        return;
-      }
-      // TODO: use cache to determine if we need to geocode again
-      geocode();
-    };
-
-    setCity(null);
-    geocodeIfNecessary().catch(() => setCity(null));
+    } catch (err) {
+      setCity(null);
+    }
   }, [coordinates]);
 
-  return { city };
+  // recalculate city any time the coordinates object changes
+  useEffect(() => {
+    calculateCity();
+  }, [coordinates]);
+
+  return { city, calculateCity };
 };
