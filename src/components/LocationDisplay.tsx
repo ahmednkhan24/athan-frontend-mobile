@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -7,11 +7,10 @@ import {
 } from 'react-native';
 import { Text } from 'react-native-elements';
 import { Ionicons } from '@expo/vector-icons';
-import { useCoordinates, useCity } from '../hooks';
+import { LocationContext } from '../contexts/LocationContext';
 
 const LocationDisplay: React.FC = () => {
-  const { calculateCoordinates } = useCoordinates();
-  const { city } = useCity();
+  const { city, calculateCoordinates } = useContext(LocationContext);
 
   return (
     <View style={styles.container}>
