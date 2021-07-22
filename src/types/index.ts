@@ -1,2 +1,2 @@
 export * from './screens';
-export * from './coordinates';
+export * from './location';

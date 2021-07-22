@@ -5,9 +5,9 @@ import {
   getCurrentPositionAsync,
 } from 'expo-location';
 import { GRANTED } from '../constants';
-import type { Coordinates } from '../types';
+import type { UseCoordinates, Coordinates } from '../types';
 
-export const useCoordinates = () => {
+export const useCoordinates = (): UseCoordinates => {
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
 
   // get permission to access location and then retrieve it
