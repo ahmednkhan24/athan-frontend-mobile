@@ -1,11 +1,25 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import LocationDisplay from '../components/LocationDisplay';
+import React, { useContext } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { Text } from 'react-native-elements';
+import { LocationContext } from '../contexts';
+import PullToRefresh from '../components/PullToRefresh';
 
 const Home: React.FC = () => {
+  const { city } = useContext(LocationContext);
+
   return (
     <SafeAreaView style={styles.container}>
-      <LocationDisplay />
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        refreshControl={<PullToRefresh />}
+      >
+        <Text h1 style={styles.cityStyles}>
+          {city || 'Chicago'}
+        </Text>
+        <Text style={styles.dateStyles}>Today, July 25, 2021</Text>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -14,8 +28,20 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  scrollView: {
+    flexGrow: 1,
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  cityStyles: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  dateStyles: {
+    flex: 1,
+    justifyContent: 'flex-start',
   },
 });
 
