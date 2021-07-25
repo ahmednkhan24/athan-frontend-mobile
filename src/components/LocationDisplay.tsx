@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  View,
+  SafeAreaView,
   TouchableOpacity,
   ActivityIndicator,
   StyleSheet,
@@ -13,7 +13,7 @@ const LocationDisplay: React.FC = () => {
   const { city, calculateCoordinates } = useContext(LocationContext);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {city ? (
         <Text h1 style={styles.cityStyles}>
           {city}
@@ -30,7 +30,7 @@ const LocationDisplay: React.FC = () => {
           style={styles.refreshIconStyles}
         />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
