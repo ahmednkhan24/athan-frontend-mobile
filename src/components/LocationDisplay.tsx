@@ -1,35 +1,24 @@
 import React, { useContext } from 'react';
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
-import { Ionicons } from '@expo/vector-icons';
 import { LocationContext } from '../contexts/LocationContext';
+import LocationRefresh from './LocationRefresh';
 
 const LocationDisplay: React.FC = () => {
-  const { city, calculateCoordinates } = useContext(LocationContext);
+  const { city } = useContext(LocationContext);
 
   return (
     <SafeAreaView style={styles.container}>
-      {city ? (
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        refreshControl={<LocationRefresh />}
+      >
         <Text h1 style={styles.cityStyles}>
           {city}
         </Text>
-      ) : (
-        <ActivityIndicator size="large" style={styles.loaderStyles} />
-      )}
-      <Text style={styles.elapsedTimeStyles}>3 secs ago</Text>
-      <TouchableOpacity onPress={calculateCoordinates}>
-        <Ionicons
-          name="refresh"
-          size={24}
-          color="grey"
-          style={styles.refreshIconStyles}
-        />
-      </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -38,8 +27,10 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#fff',
     justifyContent: 'flex-start',
+  },
+  scrollView: {
+    flex: 1,
   },
   cityStyles: {
     flex: 1,
@@ -48,22 +39,6 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 15,
     marginBottom: 5,
-  },
-  loaderStyles: {
-    flex: 1,
-    justifyContent: 'space-between',
-    paddingTop: 20,
-  },
-  elapsedTimeStyles: {
-    paddingTop: 25,
-    paddingRight: 5,
-  },
-  refreshIconStyles: {
-    flex: 1,
-    paddingTop: 15,
-    fontSize: 35, // make icon size larger
-    alignSelf: 'center', // keep icon in the center of it's area
-    marginHorizontal: 15, // add extra space to the left and right of the icon
   },
 });
 
