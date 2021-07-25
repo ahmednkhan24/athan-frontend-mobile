@@ -40,7 +40,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
-    paddingTop: 45,
   },
   cityStyles: {
     flex: 1,
@@ -49,8 +48,6 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 15,
     marginBottom: 5,
-    // borderColor: 'black',
-    // borderWidth: 1,
   },
   loaderStyles: {
     flex: 1,
@@ -64,8 +61,6 @@ export const styles = StyleSheet.create({
   refreshIconStyles: {
     flex: 1,
     paddingTop: 15,
-    // borderColor: 'black',
-    // borderWidth: 1,
     fontSize: 35, // make icon size larger
     alignSelf: 'center', // keep icon in the center of it's area
     marginHorizontal: 15, // add extra space to the left and right of the icon
