@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text, Button } from 'react-native-elements';
 import { LocationContext } from '../contexts';
 import { useDate } from '../hooks';
 import PullToRefresh from '../components/PullToRefresh';
 
 const Home: React.FC = () => {
   const { city } = useContext(LocationContext);
-  const { formattedDate } = useDate();
+  const { formattedDate, addOneDay, subtractOneDay } = useDate();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -21,6 +21,9 @@ const Home: React.FC = () => {
           {city || 'Chicago'}
         </Text>
         <Text style={styles.dateStyles}>{formattedDate}</Text>
+        <Button onPress={subtractOneDay} title="Subtract a Day" />
+        <Text></Text>
+        <Button onPress={addOneDay} title="Add a Day" />
       </ScrollView>
     </SafeAreaView>
   );
