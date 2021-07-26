@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { LocationContext } from '../contexts';
+import { useDate } from '../hooks';
 import PullToRefresh from '../components/PullToRefresh';
 
 const Home: React.FC = () => {
   const { city } = useContext(LocationContext);
+  const { formattedDate } = useDate();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,7 +20,7 @@ const Home: React.FC = () => {
         <Text h1 style={styles.cityStyles}>
           {city || 'Chicago'}
         </Text>
-        <Text style={styles.dateStyles}>Today, July 25, 2021</Text>
+        <Text style={styles.dateStyles}>{formattedDate}</Text>
       </ScrollView>
     </SafeAreaView>
   );
