@@ -5,6 +5,7 @@ import { Text, Button } from 'react-native-elements';
 import { LocationContext } from '../contexts';
 import { useDate } from '../hooks';
 import PullToRefresh from '../components/PullToRefresh';
+import SalahDisplay from '../components/SalahDisplay';
 
 const LeftActions = () => {
   return (
@@ -63,6 +64,7 @@ const Home: React.FC = () => {
           <Button onPress={subtractOneDay} title="Subtract a Day" />
           <Text></Text>
           <Button onPress={addOneDay} title="Add a Day" />
+          <SalahDisplay />
         </Swipeable>
       </ScrollView>
     </SafeAreaView>
