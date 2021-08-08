@@ -16,6 +16,8 @@ const SalahList: React.FC = () => {
   return (
     <View style={styles.container}>
       <FlatList
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         refreshControl={<PullToRefresh />}
         ListHeaderComponent={<SalahHeader />}
         data={salahs}
