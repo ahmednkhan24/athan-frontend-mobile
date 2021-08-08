@@ -31,6 +31,9 @@ export const styles = StyleSheet.create({
   dateStyles: {
     flex: 1,
     justifyContent: 'flex-start',
+    fontSize: 15,
+    padding: 12,
+    paddingLeft: 0,
   },
 });
 
