@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import SalahItem from './SalahItem';
 
@@ -11,13 +11,13 @@ const salahs = [
 ];
 
 const SalahList: React.FC = () => {
-  return (
-    <View style={styles.container}>
-      {salahs.map(({ title, time }) => (
-        <SalahItem key={title} title={title} time={time} />
-      ))}
-    </View>
-  );
+  const salahItems = useMemo(() => {
+    return salahs.map(({ title, time }) => (
+      <SalahItem key={title} title={title} time={time} />
+    ));
+  }, [salahs]);
+
+  return <View style={styles.container}>{salahItems}</View>;
 };
 
 export const styles = StyleSheet.create({
