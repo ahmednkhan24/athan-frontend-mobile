@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import SalahItem from './SalahItem';
-import PullToRefresh from './PullToRefresh';
-import SalahHeader from './SalahHeader';
 
 const salahs = [
   { title: 'Fajr', time: '4:41 am' },
@@ -15,17 +13,9 @@ const salahs = [
 const SalahList: React.FC = () => {
   return (
     <View style={styles.container}>
-      <FlatList
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        refreshControl={<PullToRefresh />}
-        ListHeaderComponent={<SalahHeader />}
-        data={salahs}
-        keyExtractor={(salah) => salah.title}
-        renderItem={({ item }) => (
-          <SalahItem title={item.title} time={item.time} />
-        )}
-      />
+      {salahs.map(({ title, time }) => (
+        <SalahItem key={title} title={title} time={time} />
+      ))}
     </View>
   );
 };

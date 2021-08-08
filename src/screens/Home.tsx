@@ -1,8 +1,10 @@
 import React from 'react';
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { Text } from 'react-native-elements';
 import SalahList from '../components/SalahList';
+import LocationHeader from '../components/LocationHeader';
+import PullToRefresh from '../components/PullToRefresh';
 
 const LeftActions = () => {
   return (
@@ -40,12 +42,20 @@ const RightActions = () => {
 
 const Home: React.FC = () => (
   <SafeAreaView style={styles.container}>
-    <Swipeable
-      renderLeftActions={LeftActions}
-      renderRightActions={RightActions}
+    <ScrollView
+      contentContainerStyle={styles.scrollView}
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+      refreshControl={<PullToRefresh />}
     >
-      <SalahList />
-    </Swipeable>
+      <LocationHeader />
+      <Swipeable
+        renderLeftActions={LeftActions}
+        renderRightActions={RightActions}
+      >
+        <SalahList />
+      </Swipeable>
+    </ScrollView>
   </SafeAreaView>
 );
 
@@ -55,6 +65,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginLeft: 15,
     marginRight: 15,
+  },
+  scrollView: {
+    flexGrow: 1,
   },
 });
 
