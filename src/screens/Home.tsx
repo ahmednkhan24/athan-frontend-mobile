@@ -1,10 +1,51 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { Text } from 'react-native-elements';
 import SalahList from '../components/SalahList';
+
+const LeftActions = () => {
+  return (
+    <View
+      style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center' }}
+    >
+      <Text
+        style={{
+          color: 'white',
+          paddingHorizontal: 10,
+          fontWeight: '600',
+        }}
+      >
+        Left Action
+      </Text>
+    </View>
+  );
+};
+
+const RightActions = () => {
+  return (
+    <View style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center' }}>
+      <Text
+        style={{
+          color: 'white',
+          paddingHorizontal: 10,
+          fontWeight: '600',
+        }}
+      >
+        Right Action
+      </Text>
+    </View>
+  );
+};
 
 const Home: React.FC = () => (
   <SafeAreaView style={styles.container}>
-    <SalahList />
+    <Swipeable
+      renderLeftActions={LeftActions}
+      renderRightActions={RightActions}
+    >
+      <SalahList />
+    </Swipeable>
   </SafeAreaView>
 );
 
