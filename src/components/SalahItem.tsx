@@ -1,35 +1,33 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, ListItem } from 'react-native-elements';
+import { Text, Card } from 'react-native-elements';
 
 // TODO: type this as React.FC
 const SalahDisplay = ({ title, time }: any) => {
   return (
-    <View style={styles.container}>
-      <ListItem key={title} bottomDivider>
-        <ListItem.Content style={styles.contentStyles}>
-          <ListItem.Title style={styles.salahNameStyles}>
-            <Text h4>{title}</Text>
-          </ListItem.Title>
-          <ListItem.Subtitle style={styles.salahTimeStyles}>
-            <Text h4>{time}</Text>
-          </ListItem.Subtitle>
-        </ListItem.Content>
-      </ListItem>
-    </View>
+    <Card containerStyle={[styles.cardStyles, styles.inactiveStyles]}>
+      <View style={styles.contentStyles}>
+        <Text h4>{title}</Text>
+        <Text h4>{time}</Text>
+      </View>
+    </Card>
   );
 };
 
 export const styles = StyleSheet.create({
-  container: {
+  cardStyles: {
     flex: 1,
+    borderRadius: 8,
+    padding: 20,
+  },
+  activeStyles: {},
+  inactiveStyles: {
+    backgroundColor: '#34dceb',
   },
   contentStyles: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: 20,
-    marginBottom: 20,
   },
   salahNameStyles: {},
   salahTimeStyles: {},
