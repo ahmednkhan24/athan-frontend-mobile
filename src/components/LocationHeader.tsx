@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
-import { useSelector } from 'react-redux';
-import { useDate } from '../hooks';
+import { useDate, useLocation } from '../hooks';
 
 const SalahHeader: React.FC = () => {
-  const { city } = useSelector((state) => (state as any).location);
+  const {
+    location: { city },
+  } = useLocation();
   const { formattedDate, subtractOneDay, addOneDay } = useDate();
 
   return (
