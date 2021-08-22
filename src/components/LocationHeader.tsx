@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
-import { LocationContext } from '../contexts';
+import { useSelector } from 'react-redux';
 import { useDate } from '../hooks';
 
 const SalahHeader: React.FC = () => {
-  const { city } = useContext(LocationContext);
+  const { city } = useSelector((state) => (state as any).location);
   const { formattedDate, subtractOneDay, addOneDay } = useDate();
 
   return (
     <View style={styles.container}>
       <Text h1 style={styles.cityStyles}>
-        {city || 'Chicago'}
+        {city}
       </Text>
       <Text style={styles.dateStyles}>{formattedDate}</Text>
       <Button onPress={subtractOneDay} title="Subtract a Day" />
