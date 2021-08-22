@@ -1,3 +1,5 @@
+import { Action } from './store';
+
 export type Coordinates = {
   latitude: number;
   longitude: number;
@@ -6,6 +8,16 @@ export type Coordinates = {
 export type UseCoordinates = {
   coordinates: Coordinates | null;
   calculateCoordinates: () => any;
+};
+
+export type LocationState = {
+  coordinates: Coordinates;
+  city: string;
+};
+
+export type UseLocation = () => {
+  location: LocationState;
+  recalculateLocation: () => Action;
 };
 
 export type UseCity = {
