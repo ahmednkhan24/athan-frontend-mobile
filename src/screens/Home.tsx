@@ -1,18 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import { Button, Text } from 'react-native-elements';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SalahList from '../components/SalahList';
 import LocationHeader from '../components/LocationHeader';
 import PullToRefresh from '../components/PullToRefresh';
 import Swipe from '../components/Swipe';
-import { fetchTodos } from '../store/actions';
 
 const Home: React.FC = () => {
-  const todos = useSelector((state) => (state as any).todos.todos);
-  console.log('todos: ', todos);
-  const dispatch = useDispatch();
+  // const todos = useSelector((state) => (state as any).todos.todos);
+  // console.log('todos: ', todos);
+  // const dispatch = useDispatch();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -23,8 +21,6 @@ const Home: React.FC = () => {
         refreshControl={<PullToRefresh />}
       >
         <LocationHeader />
-        <Text />
-        <Button onPress={() => dispatch(fetchTodos())} title="Fetch todos" />
         <Swipeable
           renderLeftActions={() => <Swipe swipeType="LEFT" />}
           renderRightActions={() => <Swipe swipeType="RIGHT" />}
