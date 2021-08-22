@@ -6,7 +6,7 @@ export type Action = {
   payload?: any;
 };
 
-export type ActionCreator = (params: any) => Action;
+export type ActionCreator = (params?: any) => Action;
 
 export type LocationState = {
   coordinates: Coordinates;
