@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import locationReducers, {
   initialState as locationInitialState,
 } from './locationReducers';
-import { State } from '../../types';
+import { RootState } from '../../types';
 
-export const initialState: State = {
+export const initialState: RootState = {
   location: { ...locationInitialState },
 };
 

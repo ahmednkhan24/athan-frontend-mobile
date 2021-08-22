@@ -1,3 +1,4 @@
+import { DefaultRootState } from 'react-redux';
 import { Coordinates } from './location';
 
 export type Action = {
@@ -12,6 +13,6 @@ export type LocationState = {
   city: string;
 };
 
-export type State = {
+export interface RootState extends DefaultRootState {
   location: LocationState;
-};
+}
