@@ -26,8 +26,3 @@ export type UseLocation = () => {
   location: LocationState;
   recalculateLocation: () => Action;
 };
-
-export type UseCity = {
-  city: string | null;
-  calculateCity: () => any;
-};
