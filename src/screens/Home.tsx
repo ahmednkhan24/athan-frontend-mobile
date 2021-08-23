@@ -1,16 +1,21 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  RefreshControl,
+  StyleSheet,
+} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SalahList from '../components/SalahList';
 import LocationHeader from '../components/LocationHeader';
-import PullToRefresh from '../components/PullToRefresh';
 import Swipe from '../components/Swipe';
+import { useLocation } from '../hooks';
 
 const Home: React.FC = () => {
-  // const todos = useSelector((state) => (state as any).todos.todos);
-  // console.log('todos: ', todos);
-  // const dispatch = useDispatch();
+  const {
+    location: { isLoading },
+    recalculateLocation,
+  } = useLocation();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,7 +23,12 @@ const Home: React.FC = () => {
         contentContainerStyle={styles.scrollViewStyles}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        refreshControl={<PullToRefresh />}
+        refreshControl={
+          <RefreshControl
+            refreshing={isLoading}
+            onRefresh={recalculateLocation}
+          />
+        }
       >
         <LocationHeader />
         <Swipeable
