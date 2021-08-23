@@ -12,11 +12,6 @@ export type DeviceAddress =
       city: string;
     };
 
-export type UseCoordinates = {
-  coordinates: Coordinates | null;
-  calculateCoordinates: () => any;
-};
-
 export type LocationState = {
   coordinates: Coordinates;
   city: string;
