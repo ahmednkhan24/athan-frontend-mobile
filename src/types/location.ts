@@ -1,9 +1,16 @@
+import { LocationGeocodedAddress } from 'expo-location';
 import { Action } from './store';
 
 export type Coordinates = {
   latitude: number;
   longitude: number;
 };
+
+export type DeviceAddress =
+  | LocationGeocodedAddress
+  | {
+      city: string;
+    };
 
 export type UseCoordinates = {
   coordinates: Coordinates | null;
