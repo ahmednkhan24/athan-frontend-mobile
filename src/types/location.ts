@@ -13,6 +13,7 @@ export type DeviceAddress =
     };
 
 export type LocationState = {
+  isLoading: boolean;
   coordinates: Coordinates;
   city: string;
 };

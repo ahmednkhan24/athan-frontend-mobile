@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { saveCoordinates, saveCity } from '../actions';
+import { saveCoordinates, saveCity, setIsLoading } from '../actions';
 import { CALCULATE_COORDINATES, SAVE_COORDINATES } from '../constants';
 import {
   retrieveDeviceCoordinates,
@@ -8,6 +8,7 @@ import {
 import { Coordinates, DeviceAddress } from '../../types';
 
 export function* attemptToCalculateCoordinates() {
+  yield put(setIsLoading(true));
   const { latitude, longitude }: Coordinates =
     yield retrieveDeviceCoordinates();
   yield put(
@@ -23,6 +24,7 @@ export function* attemptToCalculateCity(action: any) {
     action.payload
   );
   yield put(saveCity(city));
+  yield put(setIsLoading(false));
 }
 
 export function* calculateCoordinates() {

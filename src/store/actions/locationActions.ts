@@ -1,9 +1,15 @@
 import {
+  IS_LOADING,
   CALCULATE_COORDINATES,
   SAVE_COORDINATES,
   SAVE_CITY,
 } from '../constants';
 import { ActionCreator, Coordinates } from '../../types';
+
+export const setIsLoading = (isLoading: boolean) => ({
+  type: IS_LOADING,
+  payload: isLoading,
+});
 
 export const calculateCoordinates: ActionCreator = () => ({
   type: CALCULATE_COORDINATES,
