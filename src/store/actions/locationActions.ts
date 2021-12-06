@@ -16,12 +16,12 @@ export const calculateCoordinates: ActionCreator = () => ({
   type: CALCULATE_COORDINATES,
 });
 
-export const saveCoordinates: ActionCreator = (coords: Coordinates) => ({
+export const saveCoordinates = (coords: Coordinates) => ({
   type: SAVE_COORDINATES,
   payload: coords,
 });
 
-export const saveCity: ActionCreator = (city: string) => ({
+export const saveCity = (city: string) => ({
   type: SAVE_CITY,
   payload: city,
 });

@@ -29,7 +29,7 @@ export function* attemptToCalculateCity(action: any) {
   const { city }: DeviceAddress = yield convertDeviceCoordinatesToAddress(
     action.payload
   );
-  yield put(saveCity(city));
+  yield put(saveCity(city || 'Indianapolis'));
   yield put(setIsLoading(false));
 }
 
