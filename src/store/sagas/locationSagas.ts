@@ -1,11 +1,17 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { saveCoordinates, saveCity, setIsLoading } from '../actions';
+import {
+  saveCoordinates,
+  saveCity,
+  setIsLoading,
+  saveTimings,
+} from '../actions';
 import { CALCULATE_COORDINATES, SAVE_COORDINATES } from '../constants';
 import {
   retrieveDeviceCoordinates,
   convertDeviceCoordinatesToAddress,
+  fetchTimingsBasedOnCoordinates,
 } from '../../utils';
-import { Coordinates, DeviceAddress } from '../../types';
+import { Coordinates, DeviceAddress, Timings } from '../../types';
 
 export function* attemptToCalculateCoordinates() {
   yield put(setIsLoading(true));
@@ -27,6 +33,12 @@ export function* attemptToCalculateCity(action: any) {
   yield put(setIsLoading(false));
 }
 
+export function* attemptToFetchTimings(action: any) {
+  const timings: Timings = yield fetchTimingsBasedOnCoordinates(action.payload);
+  yield put(saveTimings(timings));
+  yield put(setIsLoading(false));
+}
+
 export function* calculateCoordinates() {
   yield takeEvery(CALCULATE_COORDINATES, attemptToCalculateCoordinates);
 }
@@ -35,6 +47,10 @@ export function* calculateCity() {
   yield takeEvery(SAVE_COORDINATES, attemptToCalculateCity);
 }
 
+export function* fetchTimings() {
+  yield takeEvery(SAVE_COORDINATES, attemptToFetchTimings);
+}
+
 export default () => {
-  return [calculateCoordinates(), calculateCity()];
+  return [calculateCoordinates(), calculateCity(), fetchTimings()];
 };

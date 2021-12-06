@@ -3,8 +3,9 @@ import {
   CALCULATE_COORDINATES,
   SAVE_COORDINATES,
   SAVE_CITY,
+  SAVE_TIMINGS,
 } from '../constants';
-import { ActionCreator, Coordinates } from '../../types';
+import { ActionCreator, Coordinates, Timings } from '../../types';
 
 export const setIsLoading = (isLoading: boolean) => ({
   type: IS_LOADING,
@@ -23,4 +24,9 @@ export const saveCoordinates: ActionCreator = (coords: Coordinates) => ({
 export const saveCity: ActionCreator = (city: string) => ({
   type: SAVE_CITY,
   payload: city,
+});
+
+export const saveTimings = (timings: Timings) => ({
+  type: SAVE_TIMINGS,
+  payload: timings,
 });
