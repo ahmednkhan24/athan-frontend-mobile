@@ -1,4 +1,9 @@
-import { IS_LOADING, SAVE_COORDINATES, SAVE_CITY } from '../constants';
+import {
+  IS_LOADING,
+  SAVE_COORDINATES,
+  SAVE_CITY,
+  SAVE_TIMINGS,
+} from '../constants';
 import { LocationState, Action } from '../../types';
 
 export const initialState: LocationState = {
@@ -8,6 +13,13 @@ export const initialState: LocationState = {
     longitude: -87.6234,
   },
   city: 'Chicago',
+  timings: {
+    Fajr: '',
+    Dhuhr: '',
+    Asr: '',
+    Maghrib: '',
+    Isha: '',
+  },
 };
 
 export default (state = initialState, { type, payload }: Action) => {
@@ -26,6 +38,11 @@ export default (state = initialState, { type, payload }: Action) => {
       return {
         ...state,
         city: payload,
+      };
+    case SAVE_TIMINGS:
+      return {
+        ...state,
+        timings: payload,
       };
     default:
       return state;
